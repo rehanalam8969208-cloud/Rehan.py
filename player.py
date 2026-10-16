@@ -1,20 +1,17 @@
 import os
 
 def play_playlist():
-    # Ab file ka naam sirf 'music' hai
     file_path = "/storage/emulated/0/MirrorNotes/music"
     
     if not os.path.exists(file_path):
-        file_path += ".txt"
-        if not os.path.exists(file_path):
-            print("[-] 'music' file nahi mili MirrorNotes folder me!")
-            return
+        print("[-] 'music' file nahi mili! Install script ne banai thi, shayad delete ho gayi.")
+        return
             
     with open(file_path, "r", encoding="utf-8") as f:
         songs = [line.strip() for line in f if line.strip()]
         
     if not songs:
-        print("[-] 'music' file khali hai!")
+        print("[-] 'music' file khali hai! Mirror app se isme gaano ke naam likho.")
         return
         
     print(f"\n[+] Total {len(songs)} gaane mile hain!")
@@ -37,3 +34,4 @@ def play_playlist():
 if __name__ == "__main__":
     os.system('clear')
     play_playlist()
+    

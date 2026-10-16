@@ -2,24 +2,21 @@ import os
 import sys
 
 def download_media(platform_file, format_type):
-    # MirrorNotes folder se file padhega (youtube ya insta)
     file_path = f"/storage/emulated/0/MirrorNotes/{platform_file}"
     save_path = "/storage/emulated/0/Download/%(title)s.%(ext)s"
     
     if not os.path.exists(file_path):
-        file_path += ".txt"
-        if not os.path.exists(file_path):
-            print(f"[-] '{platform_file}' file nahi mili Mirror app me!")
-            return
+        print(f"[-] '{platform_file}' file nahi mili MirrorNotes me!")
+        return
             
     with open(file_path, "r", encoding="utf-8") as f:
         items = [line.strip() for line in f if line.strip()]
         
     if not items:
-        print(f"[-] '{platform_file}' file khali hai!")
+        print(f"[-] '{platform_file}' file khali hai! Mirror app me isme link/naam dalo.")
         return
         
-    print(f"\n[+] Total {len(items)} links/naam mile hain '{platform_file}' me!")
+    print(f"\n[+] Total {len(items)} items mile hain '{platform_file}' me!")
     
     for i, item in enumerate(items, 1):
         print(f"\n================================")
@@ -45,10 +42,10 @@ if __name__ == "__main__":
         print("Error: Command missing!")
         sys.exit(1)
         
-    platform_file = sys.argv[1] # youtube ya insta
-    format_type = sys.argv[2]   # mp4 ya mp3
+    platform_file = sys.argv[1] 
+    format_type = sys.argv[2]   
     
     os.system('clear')
     print(f"=== TERMUX {platform_file.upper()} {format_type.upper()} DOWNLOADER ===")
     download_media(platform_file, format_type)
-  
+    

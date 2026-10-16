@@ -1,21 +1,20 @@
 import os
-import sys
 
 def play_playlist():
-    file_path = "/storage/emulated/0/MirrorNotes/rehan.music"
+    # Ab file ka naam sirf 'music' hai
+    file_path = "/storage/emulated/0/MirrorNotes/music"
     
-    # Check for both with and without .txt extension
     if not os.path.exists(file_path):
         file_path += ".txt"
         if not os.path.exists(file_path):
-            print("[-] 'rehan.music' file nahi mili MirrorNotes folder me!")
+            print("[-] 'music' file nahi mili MirrorNotes folder me!")
             return
             
     with open(file_path, "r", encoding="utf-8") as f:
         songs = [line.strip() for line in f if line.strip()]
         
     if not songs:
-        print("[-] 'rehan.music' file khali hai!")
+        print("[-] 'music' file khali hai!")
         return
         
     print(f"\n[+] Total {len(songs)} gaane mile hain!")
@@ -38,4 +37,3 @@ def play_playlist():
 if __name__ == "__main__":
     os.system('clear')
     play_playlist()
-  
